@@ -1,31 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Spike40 reconstruction with Hinge Loss ver.2 + 3D-TV + AdamW.
-
-This script is adapted from the original main_spike.py while keeping the
-core reconstruction algorithm unchanged:
-
-    Hinge Loss ver.2 + 3D Total Variation + AdamW
-    + Hooke-Jeeves hyperparameter search
-
-Main changes for Spike40:
-- Read spike streams directly from Spike40 .dat files.
-- Use 41 spike frames centered at the key frame encoded in the filename.
-- Use conversion_rate = 0.6 and threshold = 1.0.
-- Remove PSF engineering.
-- Remove AWGN.
-- Remove image -> spike generation.
-- Jointly estimate the intensity sequence and the initial residual voltage.
-- Remove spike-count sweep.
-- Remove TFW / TFI.
-- Process all Spike40 samples in a single execution.
-- Save reconstruction results and Hooke-Jeeves hyperparameters separately.
-
-NOTE:
-Hooke-Jeeves is still performed per test sample using the corresponding GT
-center frame, because fixed hyperparameters are intentionally not introduced
-at this stage.
-"""
 
 import argparse
 import csv
